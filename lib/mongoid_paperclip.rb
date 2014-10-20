@@ -18,7 +18,7 @@ end
 module Paperclip
   module Helpers
     def each_instance_with_attachment(klass, name)
-      class_for(klass).unscoped.where("#{name}_file_name".to_sym.ne => nil).each do |instance|
+      class_for(klass).unscoped.ne("#{name}_file_name" => nil).each do |instance|
         yield(instance)
       end
     end
